@@ -1,0 +1,8 @@
+[Unit]
+Description=Listen to Bluetooth camera button events
+BindTo=sys-subsystem-bluetooth-devices-hci0:11.device
+
+[Service]
+Type=oneshot
+ExecStart=/home/pi/kbd/listener.py
+User=pi

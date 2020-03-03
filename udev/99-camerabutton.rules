@@ -1,0 +1,6 @@
+ACTION=="add",\
+  ATTRS{phys}=="0C:FC:83:41:59:C9",
+  SYMLINK+="anchorbutton",
+  SUBSYSTEM=="bluetooth",\
+  TAG+="systemd",\
+  ENV{SYSTEMD_WANTS}="signalk-bluetooth-button.service"
