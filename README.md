@@ -80,10 +80,12 @@ Now you should see the Python script starting and running whenever the Bluetooth
 
 ```
 $ journalctl -u signalk-bluetooth-button -f
-Mar 04 11:30:42 curiosity-pi systemd[1]: Starting Listen to Bluetooth camera button events...
-Mar 04 11:30:43 curiosity-pi listener.py[827]: Running!
-Mar 04 11:30:46 curiosity-pi listener.py[827]: Click
-Mar 04 11:30:47 curiosity-pi listener.py[827]: Double click
-Mar 04 11:31:08 curiosity-pi listener.py[827]: Disconnected
-Mar 04 11:31:09 curiosity-pi systemd[1]: signalk-bluetooth-button.service: Succeeded.
+Mar 04 12:02:23 curiosity-pi systemd[1]: Starting Listen to Bluetooth camera button events...
+Mar 04 12:02:24 curiosity-pi listener.py[1356]: Connected to button
+Mar 04 12:02:27 curiosity-pi listener.py[1356]: Click, drop anchor
+Mar 04 12:02:28 curiosity-pi listener.py[1356]: ok
+Mar 04 12:03:46 curiosity-pi listener.py[1356]: Double click, raise anchor
+Mar 04 12:03:46 curiosity-pi listener.py[1356]: ok
+Mar 04 12:04:51 curiosity-pi listener.py[1356]: Disconnected
+Mar 04 12:04:51 curiosity-pi systemd[1]: signalk-bluetooth-button.service: Succeeded.
 ```
