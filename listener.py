@@ -3,6 +3,7 @@ import asyncio
 import threading 
 import os
 import sys
+import requests
 from evdev import InputDevice, categorize, ecodes
 
 dev = InputDevice('/dev/input/event1')
@@ -13,9 +14,13 @@ timer = None
 def count_clicks():
     global clicks, timer
     if clicks > 1:
-        print("Double click")
+        print("Double click, raise anchor")
+        r = requests.post('http://localhost:3000/plugins/anchoralarm/raiseAnchor', data = {})
+        print(r.text)
     else:
-        print("Click")
+        print("Click, drop anchor")
+        r = requests.post('http://localhost:3000/plugins/anchoralarm/dropAnchor', data = {})
+        print(r.text)
     clicks = 0
     timer = None
 
