@@ -4,13 +4,13 @@ import threading
 import os
 import sys
 import requests
-from evdev import InputDevice, categorize, ecodes
+from evdev import InputDevice, categorize, ecodes, list_devices
 
 # Change this to the ID of your button device
 deviceId = 'b8:27:eb:a8:7c:1f'
 
 devicePath = None
-devices = [evdev.InputDevice(path) for path in evdev.list_devices()]
+devices = [InputDevice(path) for path in list_devices()]
 for device in devices:
     if device.phys == deviceId:
         devicePath = device.path
