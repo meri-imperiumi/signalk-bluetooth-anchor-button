@@ -54,6 +54,7 @@ SEQNUM=1358
 
 Please note that this repository _will not_ work for your hardware out of the box. You will need to adapt at least the udev and systemd files to match your hardware identifiers.
 Clone this repository to `/home/pi/kbd` and adapt the files to your liking.
+**Note**: You need to add your device ID to the `listener.py` file.
 
 Install the dependencies with:
 

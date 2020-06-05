@@ -6,7 +6,19 @@ import sys
 import requests
 from evdev import InputDevice, categorize, ecodes
 
-dev = InputDevice('/dev/input/event1')
+# Change this to the ID of your button device
+deviceId = 'b8:27:eb:a8:7c:1f'
+
+devicePath = None
+devices = [evdev.InputDevice(path) for path in evdev.list_devices()]
+for device in devices:
+    if device.phys == deviceId:
+        devicePath = device.path
+if devicePath == None:
+    sys.exit("No device found")
+
+dev = InputDevice(devicePath)
+
 print("Connected to button")
 
 clicks = 0
@@ -15,11 +27,11 @@ def count_clicks():
     global clicks, timer
     if clicks > 1:
         print("Double click, raise anchor")
-        r = requests.post('http://localhost:3000/plugins/anchoralarm/raiseAnchor', data = {})
+        r = requests.post('http://localhost/plugins/anchoralarm/raiseAnchor', data = {})
         print(r.text)
     else:
         print("Click, drop anchor")
-        r = requests.post('http://localhost:3000/plugins/anchoralarm/dropAnchor', data = {})
+        r = requests.post('http://localhost/plugins/anchoralarm/dropAnchor', data = {})
         print(r.text)
     clicks = 0
     timer = None
