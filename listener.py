@@ -4,10 +4,14 @@ import threading
 import os
 import sys
 import requests
+import time
 from evdev import InputDevice, categorize, ecodes, list_devices
 
 # Change this to the ID of your button device
 deviceId = 'b8:27:eb:a8:7c:1f'
+
+# Give system time to set up the device
+time.sleep(1)
 
 devicePath = None
 devices = [InputDevice(path) for path in list_devices()]
