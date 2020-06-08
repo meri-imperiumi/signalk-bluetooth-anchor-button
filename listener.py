@@ -5,6 +5,7 @@ import os
 import sys
 import requests
 import time
+import atexit
 from evdev import InputDevice, categorize, ecodes, list_devices
 
 # Change this to the ID of your button device
@@ -24,6 +25,11 @@ if devicePath == None:
 dev = InputDevice(devicePath)
 
 print("Connected to button")
+os.system('echo %s | festival --tts' % 'Button online')
+
+def shutdown():
+  os.system('echo %s | festival --tts' % 'Button offline')
+atexit.register(shutdown)
 
 clicks = 0
 timer = None
