@@ -54,7 +54,28 @@ SEQNUM=1358
 
 Please note that this repository _will not_ work for your hardware out of the box. You will need to adapt at least the udev and systemd files to match your hardware identifiers.
 Clone this repository to `/home/pi/kbd` and adapt the files to your liking.
-**Note**: You need to add your device ID to the `listener.py` file.
+**Note**: You need to add your device ID to the `listener.py` file. 
+
+You will find the correct device id to use when you run 
+
+`udevadm monitor --environment`
+
+and it will be the HID_PHYS one in a block like below 
+
+```
+UDEV  [700699.661131] bind     /devices/platform/soc/fe201000.serial/tty/ttyAMA0/hci0/hci0:14/0005:0000:0000.0010 (hid)
+ACTION=bind
+DEVPATH=/devices/platform/soc/fe201000.serial/tty/ttyAMA0/hci0/hci0:14/0005:0000:0000.0010
+SUBSYSTEM=hid
+DRIVER=hid-generic
+HID_ID=0005:00000000:00000000
+HID_NAME=Camkix Shutter
+HID_PHYS=xx:xx:xx:xx:xx:xx
+HID_UNIQ=xx:xx:xx:xx:xx:xx
+MODALIAS=hid:b0005g0001v00000000p00000000
+SEQNUM=18962
+USEC_INITIALIZED=700699660903
+```
 
 Install the dependencies with:
 
